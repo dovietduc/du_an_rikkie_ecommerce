@@ -44,8 +44,7 @@ function handleSignUp(event) {
     // Validate email
     if(valueEmail === '') {
         showError(emailSelector, 'Email không được để trống');
-    }
-    else if(emailRegex.test(valueEmail) === false) {
+    } else if(emailRegex.test(valueEmail) === false) {
         showError(emailSelector, 'Email không đúng định dạng');
     } else {
         showSuccess(emailSelector);
@@ -54,11 +53,9 @@ function handleSignUp(event) {
     // validate password
     if(passwordValue === '') {
         showError(passwordSelector, 'Password không được để trống');
-    }
-    else if(passwordValue.length < 8) {
+    } else if(passwordValue.length < 8) {
         showError(passwordSelector, 'Mật khẩu phải có ít nhất 8 kí tự');
-    } 
-    else if(passwordRegex.test(passwordValue) === false) {
+    } else if(passwordRegex.test(passwordValue) === false) {
         showError(passwordSelector, 'Mật khẩu phải có ít nhất 1 kí tự hoa, thường, đặc biệt, số');
     } else {
         showSuccess(passwordSelector);
@@ -67,15 +64,11 @@ function handleSignUp(event) {
     // Validate confirm password
     if(confirmPassValue === '') {
         showError(confirmPasswordSelector, 'Confirm password không được trống');
-    } 
-    // else if(confirmPassValue.length < 8) {
-    //     showError(confirmPasswordSelector, 'Xác nhận mật khẩu phải có ít nhất 8 kí tự');
-    // } 
-    // else if(passwordRegex.test(confirmPassValue) === false) {
-    //     showError(confirmPasswordSelector, 'Xác nhận mật khẩu phải có ít nhất 1 kí tự hoa, thường, đặc biệt, số');
-
-    // }
-     else if(confirmPassValue !== passwordValue) {
+    } else if(confirmPassValue.length < 8) {
+        showError(confirmPasswordSelector, 'Xác nhận mật khẩu phải có ít nhất 8 kí tự');
+    } else if(passwordRegex.test(confirmPassValue) === false) {
+        showError(confirmPasswordSelector, 'Xác nhận mật khẩu phải có ít nhất 1 kí tự hoa, thường, đặc biệt, số');
+    } else if(confirmPassValue !== passwordValue) {
         showError(confirmPasswordSelector, 'Xác nhận mật khẩu không trùng mật khẩu');
     } else {
         showSuccess(confirmPasswordSelector);
