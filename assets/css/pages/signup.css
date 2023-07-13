@@ -1,0 +1,23 @@
+input.error {
+    border-color: #dc3545;
+}
+
+input.success {
+    border-color: #28a745;
+}
+
+.error_message {
+    color: #dc3545;
+    font-style: italic;
+    margin-top: 3px;
+}
+
+.form-group_password {
+    position: relative;
+}
+
+.form-group_password i {
+    position: absolute;
+    top: 38%;
+    right: 3%;
+}
