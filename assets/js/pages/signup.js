@@ -7,6 +7,8 @@ let passwordSelector = document.querySelector('.password');
 let passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
 let confirmPasswordSelector = document.querySelector('.confirm_password');
 let tooglePass = document.querySelector('.toogle_password');
+// data users
+let users = [];
 
 
 function showError(input, message) {
@@ -37,13 +39,57 @@ function showSuccess(input) {
 function handleSignUp(event) {
     event.preventDefault();
     // Validate name
-    validateName();
+    let isNameValid = validateName();
     // Validate email
-    validateEmail();
+    let isEmailValid = validateEmail();
     // validate password
-    validatePassword();
+    let isPasswordValid = validatePassword();
     // Validate confirm password
-    validateConfirmPassword();
+    let isConfirmPassValid = validateConfirmPassword();
+
+    // Khi tất cả validate hợp lệ, chúng ta thực hiện lưu trữ data
+    if(isNameValid && isEmailValid && isPasswordValid && isConfirmPassValid) {
+        // 1. Trước khi push vào phải lấy thông tin ra
+        let usersBefore;
+        if(localStorage.getItem('users') === null) {
+            usersBefore = [];
+        } 
+        // khi có data local chạy vào đây
+        else {
+            usersBefore = JSON.parse(localStorage.getItem('users'));
+        }
+
+        // 2. kiểm tra email không trùng mới đưa vào localStorage
+        let isEmailUnique = true;
+        for(let i = 0; i < usersBefore.length; i++) {
+            if(usersBefore[i].email === emailSelector.value){
+                isEmailUnique = false;
+                break;
+            }
+        }
+
+        // Nếu isEmailUnique = true nghĩa là chưa có email trong hệ thống
+        if(isEmailUnique) {
+            let objNewUser = {
+                id: crypto.randomUUID(),
+                name: nameSelector.value,
+                email: emailSelector.value,
+                password: passwordSelector.value,
+                status: ''
+            }
+
+            // thêm user vào mảng đã có sẵn
+            usersBefore.push(objNewUser);
+            // save information to local storage
+            localStorage.setItem('users', JSON.stringify(usersBefore));
+            // chuyển sang trang login
+            window.location.href = '/login.html';
+        } else {
+            alert('Email thêm vào hệ thống đã tồn tại, xin thử login');
+        }
+        
+    }
+    
 }
 
 // hàm này xử lí show hide password
@@ -63,16 +109,21 @@ function handleTooglePasss(event) {
 }
 
 function validateName() {
+    let isValidate = false;
     let valueName = nameSelector.value.trim();
     // Validate name
     if(valueName === '') {
         showError(nameSelector, 'Tên không được để trống');
     } else {
+        isValidate = true;
         showSuccess(nameSelector);
     }
+    // Thông báo name có validate thành công hay không?
+    return isValidate;
 }
 
 function validateEmail() {
+    let isValidate = false;
     let valueEmail = emailSelector.value.trim();
     // Validate email
     if(valueEmail === '') {
@@ -80,11 +131,14 @@ function validateEmail() {
     } else if(emailRegex.test(valueEmail) === false) {
         showError(emailSelector, 'Email không đúng định dạng');
     } else {
+        isValidate = true;
         showSuccess(emailSelector);
     }
+    return isValidate;
 }
 
 function validatePassword() {
+    let isValidate = false;
     let passwordValue = passwordSelector.value.trim();
     // validate password
     if(passwordValue === '') {
@@ -94,11 +148,14 @@ function validatePassword() {
     } else if(passwordRegex.test(passwordValue) === false) {
         showError(passwordSelector, 'Mật khẩu phải có ít nhất 1 kí tự hoa, thường, đặc biệt, số');
     } else {
+        isValidate = true;
         showSuccess(passwordSelector);
     }
+    return isValidate;
 }
 
 function validateConfirmPassword() {
+    let isValidate = false;
     let confirmPassValue = confirmPasswordSelector.value.trim();
     let passwordValue = passwordSelector.value.trim();
     // Validate confirm password
@@ -111,8 +168,10 @@ function validateConfirmPassword() {
     } else if(confirmPassValue !== passwordValue) {
         showError(confirmPasswordSelector, 'Xác nhận mật khẩu không trùng mật khẩu');
     } else {
+        isValidate = true;
         showSuccess(confirmPasswordSelector);
     }
+    return isValidate;
 }
 
 
