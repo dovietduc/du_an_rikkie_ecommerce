@@ -18,6 +18,14 @@ input.success {
 
 .form-group_password i {
     position: absolute;
-    top: 38%;
+    top: 50%;
     right: 3%;
+    transform: translate(-50%, -50%);
+}
+.form-group_password i:hover {
+    cursor: pointer;
+}
+
+.form-group_error i {
+    top: calc(50% - 12px)
 }
