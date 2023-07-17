@@ -33,6 +33,9 @@
 <link rel="stylesheet" href="assets/css/responsive.css">
 <link rel="stylesheet" href="assets/css/pages/login.css">
 
+<!-- Hàm common -->
+<script src="assets/js/pages/common.js"></script>
+
 </head>
 
 <body>
@@ -172,25 +175,30 @@
                         
                         <form method="post">
 
+                            <div class="alert alert-danger hide" role="alert">
+                            </div>
+
                             <!-- Ô input nhập email -->
                             <div class="form-group mb-3">
                                 <input 
                                     type="text" 
-                                    class="form-control" 
+                                    class="form-control email" 
                                     name="email" 
                                     placeholder="Your Email"
                                 >
+                                <div class="error_message"></div>
                             </div>
                             <!-- Ô input nhập email -->
 
                             <!-- Ô input nhập password -->
                             <div class="form-group mb-3">
                                 <input 
-                                    class="form-control" 
+                                    class="form-control password" 
                                     type="password" 
                                     name="password" 
                                     placeholder="Password"
                                 >
+                                <div class="error_message"></div>
                             </div>
                             <!-- Ô input nhập password -->
 
@@ -198,7 +206,7 @@
                             <div class="form-group mb-3">
                                 <button 
                                     type="submit" 
-                                    class="btn btn-fill-out btn-block" 
+                                    class="btn btn-fill-out btn-block btn-login" 
                                     name="login">
                                     Log in
                                 </button>

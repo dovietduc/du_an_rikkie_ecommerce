@@ -24,6 +24,14 @@
 1. chọn ô input nhập không hợp lệ cho mầu xanh
 2. Xóa nội dung lỗi có mầu đỏ dưới ô input
 
+## Khi validate thành công chúng ta thực hiện logic như sau:
+
+1. Nếu thông tin email và pass trùng khớp với dữ liệu trong localStorage
++ Thực hiện cập nhất status = 'active' cho user login
++ Chuyển sang trang chủ index.html
+
+2. Nếu thông tin email và pass không trùng khớp với dữ liệu localStorage
++ Hiển thị lỗi ở trên form login với nội dung: Email hoặc pass không đúng
 
 
 
