@@ -67,7 +67,6 @@
                 	<div class="text-center text-md-end">
                        	<ul class="header_list">
                             <li><a href="wishlist.html"><i class="ti-heart"></i><span>Wishlist</span></a></li>
-                            <li><a href=""><i class="ti-user"></i><span class="user_login">Login</span></a></li>
 						</ul>
                     </div>
                 </div>
@@ -188,16 +187,83 @@
             </div>
             <div class="col-lg-9 col-md-8">
                 <div class="tab-content dashboard_content">
-                  	<div class="tab-pane fade active show" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+
+                    <!-- Phần quản lí sản phẩm -->
+                  	<div class="tab-pane fade active show" id="dashboard">
                     	<div class="card">
                         	<div class="card-header">
-                                <h3>Dashboard</h3>
+                                <h3>Quản lí sản phẩm</h3>
                             </div>
+
                             <div class="card-body">
-                    			<p>From your account dashboard. you can easily check &amp; view your <a href="javascript:void(0);" onclick="$('#orders-tab').trigger('click')">recent orders</a>, manage your <a href="javascript:void(0);" onclick="$('#address-tab').trigger('click')">shipping and billing addresses</a> and <a href="javascript:void(0);" onclick="$('#account-detail-tab').trigger('click')">edit your password and account details.</a></p>
+                    			<div class="form_product_wrapper">
+
+                                    <!-- phần nhập tên sản phẩm -->
+                                    <div class="form-group">
+                                        <label>Tên sản phẩm</label>
+                                        <input class="form-control-item name" placeholder="Nhập tên sản phẩm"/>
+                                        <div class="error_message"></div>
+                                    </div>
+                                    <!-- phần nhập tên sản phẩm -->
+
+                                    <!-- phần nhập giá sản phẩm -->
+                                    <div class="form-group">
+                                        <label>Giá sản phẩm</label>
+                                        <input class="form-control-item price_product" placeholder="Nhập giá sản phẩm"/>
+                                        <div class="error_message"></div>
+                                    </div>
+                                    <!-- phần nhập giá sản phẩm -->
+
+                                    <!-- phần ảnh sản phẩm -->
+                                    <div class="form-group">
+                                        <label>Ảnh sản phẩm</label>
+                                        <input class="form-control-item image" placeholder="Nhập ảnh sản phẩm"/>
+                                        <div class="error_message"></div>
+                                    </div>
+                                    <!-- phần nhập ảnh phẩm -->
+
+                                    <!-- phần nhập mô tả sản phẩm -->
+                                    <div class="form-group">
+                                        <label>Mô tả sản phẩm</label>
+                                        <textarea rows="6" class="form-control-item description"></textarea>
+                                        <div class="error_message"></div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <button class="btn_common btn_save">Save</button>
+                                    </div>
+                                    <!-- phần nhập mô tả phẩm -->
+
+                                    <!-- 1. end form -->
+
+                                    <!-- 2. Table hiển thị thông tin sản phẩm -->
+                                    <div class="title">
+                                        <h2>Danh sách sản phẩm</h2>
+                                    </div>
+                                    <table class="styles_table">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Price</td>
+                                                <td>Image</td>
+                                                <td>Actions</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+
+                                        </tbody>   
+                                    </table>
+
+                                </div>
                             </div>
+
                         </div>
                   	</div>
+                    <!-- Phần quản lí sản phẩm -->
+
+
+
                   	<div class="tab-pane fade" id="orders" role="tabpanel" aria-labelledby="orders-tab">
                     	<div class="card">
                         	<div class="card-header">
@@ -446,8 +512,10 @@
 
 <!-- Latest compiled and minified Bootstrap --> 
 <script src="assets/bootstrap/js/bootstrap.min.js"></script> 
-
+<!-- js hiển thị ban đầu khi vào trang my_acount -->
 <script src="assets/js/pages/my_acount.js"></script>
+<!-- js quản lí sản phẩm -->
+<script src="assets/js/pages/my_acount_product.js"></script>
 
 </body>
 </html>
