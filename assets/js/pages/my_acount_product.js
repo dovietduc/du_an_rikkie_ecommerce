@@ -10,7 +10,10 @@ let tbodySelector = document.querySelector('tbody');
 
 
 // 2. khai báo hàm
-function handleAddProduct() {
+function handleAddProduct(event) {
+
+    // Ngăn submit form làm trang load lại
+    event.preventDefault();
 
     let isValidForm = true;
     // 1. validate name
@@ -73,8 +76,53 @@ function handleAddProduct() {
 
     // kiểm tra form hợp lệ
     if(isValidForm) {
-        handleSubmitForm();
+        let clicked = event.target;
+        if(clicked.classList.contains('update')) {
+            let idUpdate = clicked.getAttribute('data-id');
+            handleUpdateForm(idUpdate);
+        } else {
+            handleSubmitForm();
+        }
+        
     }   
+    // reset value form
+    document.querySelector('#form_save_product').reset();
+
+}
+
+function handleUpdateForm(idUpdate) {
+    // 1. Lấy tất cả dữ liệu ở localStorage
+    let products = JSON.parse(localStorage.getItem('products'));
+
+    // 2. Tìm ra index của object cần update
+    let indexUpdate = products.findIndex(
+        function(item) {
+            if(item.id === idUpdate) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    );
+    // 3. Thay đổi value object theo value người dùng nhập
+    let valueName = nameSelector.value.trim();
+    let valuePrice = priceSelector.value.trim();
+    let valueImage = imageSelector.value.trim();
+    let valueDes = descriptionSelector.value.trim();
+    products[indexUpdate] = {
+        id: products[indexUpdate].id,
+        name: valueName,
+        price: valuePrice,
+        image: valueImage,
+        description: valueDes
+    }
+    // 4. Đưa thông tin đã cập nhật vào localStorage
+    localStorage.setItem('products', JSON.stringify(products));
+    // 5. render theo localStorage đã update
+    renderDataProduct();
+    // 6. remove class update to status add
+    buttonSave.classList.remove('update');
+    buttonSave.removeAttribute('data-id');
 
 }
 
@@ -130,7 +178,7 @@ function renderDataProduct() {
                     <img src="${productItem.image}" alt=""/>
                 </td>
                 <td>
-                    <button class="btn_common btn_edit">Edit</button>
+                    <button data-id="${productItem.id}" class="btn_common btn_edit">Edit</button>
                     <button data-id="${productItem.id}" class="btn_common btn_delete">Delete</button>
                 </td>
             </tr>`;
@@ -143,7 +191,7 @@ function renderDataProduct() {
     
 }
 
-function handleDeleteProduct(event) {
+function handleProcessProduct(event) {
     let clicked = event.target;
     if(clicked.classList.contains('btn_delete')) {
         // 1. Lấy tất cả dữ liệu từ localStorage
@@ -160,6 +208,28 @@ function handleDeleteProduct(event) {
         localStorage.setItem('products', JSON.stringify(productsRemoveById));
         // 5. render lại danh sách sản phẩm theo localStorage
         renderDataProduct();
+    } else if(clicked.classList.contains('btn_edit')) {
+        // 1. Lấy tất cả dữ liệu từ localStorage
+        let products = JSON.parse(localStorage.getItem('products'));
+        // 2. Lấy ra object đang edit theo id
+        let id = clicked.getAttribute('data-id');
+
+        let objEdditing = products.find(
+            function(item) {
+                return item.id === id;
+            }
+        );
+        // 3. Đưa dữ liệu object vào input
+        // gán lại value cho input
+        nameSelector.value = objEdditing.name;
+        priceSelector.value = objEdditing.price;
+        imageSelector.value = objEdditing.image;
+        descriptionSelector.value = objEdditing.description;
+        // 4. Thêm trạng thái vào nút save để biết update hay add
+        // 4.1 Thêm class update cho button save
+        buttonSave.classList.add('update');
+        // 4.2 Thêm id để biết cập nhật sản phẩm nào
+        buttonSave.setAttribute('data-id', id);
     }
     
 }
@@ -169,4 +239,4 @@ renderDataProduct();
 // 3. Nơi lắng nghe các sự kiện
 buttonSave.addEventListener('click', handleAddProduct);
 // thêm sự kiện cho xóa sản phẩm và edit sản phẩm
-tbodySelector.addEventListener('click', handleDeleteProduct);
+tbodySelector.addEventListener('click', handleProcessProduct);
