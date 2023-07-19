@@ -8,6 +8,7 @@ let tbodySelector = document.querySelector('tbody');
 
 
 
+
 // 2. khai báo hàm
 function handleAddProduct() {
 
@@ -130,7 +131,7 @@ function renderDataProduct() {
                 </td>
                 <td>
                     <button class="btn_common btn_edit">Edit</button>
-                    <button class="btn_common btn_delete">Delete</button>
+                    <button data-id="${productItem.id}" class="btn_common btn_delete">Delete</button>
                 </td>
             </tr>`;
         }
@@ -142,9 +143,30 @@ function renderDataProduct() {
     
 }
 
-
+function handleDeleteProduct(event) {
+    let clicked = event.target;
+    if(clicked.classList.contains('btn_delete')) {
+        // 1. Lấy tất cả dữ liệu từ localStorage
+        let products = JSON.parse(localStorage.getItem('products'));
+        // 2. Tìm id cần xóa ra khỏi array
+        let id = clicked.getAttribute('data-id');
+        // 3. Xóa object với id click ra khỏi mảng
+        let productsRemoveById = products.filter(
+            function(item) {
+                return item.id !== id;
+            }
+        );
+        // 4. cập nhật lại locaStorage
+        localStorage.setItem('products', JSON.stringify(productsRemoveById));
+        // 5. render lại danh sách sản phẩm theo localStorage
+        renderDataProduct();
+    }
+    
+}
 
 // Hiển thị data trong localStorage
 renderDataProduct();
 // 3. Nơi lắng nghe các sự kiện
 buttonSave.addEventListener('click', handleAddProduct);
+// thêm sự kiện cho xóa sản phẩm và edit sản phẩm
+tbodySelector.addEventListener('click', handleDeleteProduct);
