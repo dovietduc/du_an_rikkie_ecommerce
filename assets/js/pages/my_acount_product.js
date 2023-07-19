@@ -4,7 +4,7 @@ let nameSelector = document.querySelector('.name');
 let priceSelector = document.querySelector('.price_product');
 let imageSelector = document.querySelector('.image');
 let descriptionSelector = document.querySelector('.description');
-let tbodySelector = document.querySelector('tbody');
+let tbodySelector = document.querySelector('tbody.product_table');
 
 
 

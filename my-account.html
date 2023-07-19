@@ -174,7 +174,7 @@
                         <a class="nav-link" id="orders-tab" data-bs-toggle="tab" href="#orders" role="tab" aria-controls="orders" aria-selected="false"><i class="ti-shopping-cart-full"></i>Orders</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" id="address-tab" data-bs-toggle="tab" href="#address" role="tab" aria-controls="address" aria-selected="true"><i class="ti-location-pin"></i>My Address</a>
+                        <a class="nav-link" id="address-tab" data-bs-toggle="tab" href="#address" role="tab" aria-controls="address" aria-selected="true"><i class="ti-folder"></i>Category</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" id="account-detail-tab" data-bs-toggle="tab" href="#account-detail" role="tab" aria-controls="account-detail" aria-selected="true"><i class="ti-id-badge"></i>Account details</a>
@@ -251,11 +251,14 @@
                                                 <td>Actions</td>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody class="product_table">
 
 
                                         </tbody>   
                                     </table>
+
+
+
 
                                 </div>
                             </div>
@@ -304,34 +307,59 @@
                             </div>
                         </div>
                   	</div>
-					<div class="tab-pane fade" id="address" role="tabpanel" aria-labelledby="address-tab">
-                    	<div class="row">
-                        	<div class="col-lg-6">
-                                <div class="card mb-3 mb-lg-0">
-                                    <div class="card-header">
-                                        <h3>Billing Address</h3>
+
+                    <!-- quản lí danh mục sản phẩm -->
+					<div class="tab-pane fade" id="address">
+                    	<div class="card">
+
+                            <div class="card-header">
+                                <h3>Quản lí danh mục</h3>
+                            </div>
+
+                            <div class="card-body">
+                                <div class="category_wrapper">
+                                    <form>
+                                        <!-- phần nhập tên sản phẩm -->
+                                        <div class="form-group">
+                                            <label>Tên danh mục</label>
+                                            <input 
+                                                class="form-control-item category_name" 
+                                                placeholder="Nhập tên danh mục"
+                                            />
+                                            <div class="error_message"></div>
+                                        </div>
+                                        <!-- phần nhập tên sản phẩm -->
+
+                                        <div class="form-group">
+                                            <button class="btn_common btn_category_save">Save</button>
+                                        </div>
+                                    </form>
+
+
+                                    <div class="title">
+                                        <h2>Danh mục</h2>
                                     </div>
-                                    <div class="card-body">
-                                        <address>House #15<br>Road #1<br>Block #C <br>Angali <br> Vedora <br>1212</address>
-                                        <p>New York</p>
-                                        <a href="#" class="btn btn-fill-out">Edit</a>
-                                    </div>
+                                    <table class="styles_table">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Actions</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="category_table">
+
+
+                                        </tbody>   
+                                    </table>
                                 </div>
                             </div>
-                            <div class="col-lg-6">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h3>Shipping Address</h3>
-                                    </div>
-                                    <div class="card-body">
-                                        <address>House #15<br>Road #1<br>Block #C <br>Angali <br> Vedora <br>1212</address>
-                                        <p>New York</p>
-                                        <a href="#" class="btn btn-fill-out">Edit</a>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
 					</div>
+                    <!-- quản lí danh mục sản phẩm -->
+
+
+
                     <div class="tab-pane fade" id="account-detail" role="tabpanel" aria-labelledby="account-detail-tab">
 						<div class="card">
                         	<div class="card-header">
@@ -518,6 +546,8 @@
 <script src="assets/js/pages/my_acount.js"></script>
 <!-- js quản lí sản phẩm -->
 <script src="assets/js/pages/my_acount_product.js"></script>
+<!-- js quản lí danh mục sản phẩm -->
+<script src="assets/js/pages/my_acount_category.js"></script>
 
 </body>
 </html>
