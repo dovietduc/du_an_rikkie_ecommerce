@@ -83,10 +83,10 @@ function handleAddProduct(event) {
         } else {
             handleSubmitForm();
         }
-        
+        // reset value form
+        document.querySelector('#form_save_product').reset();
     }   
-    // reset value form
-    document.querySelector('#form_save_product').reset();
+    
 
 }
 
@@ -109,12 +109,15 @@ function handleUpdateForm(idUpdate) {
     let valuePrice = priceSelector.value.trim();
     let valueImage = imageSelector.value.trim();
     let valueDes = descriptionSelector.value.trim();
+    // lấy value type do người dùng chọn
+    let valueType = document.querySelector('.type_product:checked').value;
     products[indexUpdate] = {
         id: products[indexUpdate].id,
         name: valueName,
         price: valuePrice,
         image: valueImage,
-        description: valueDes
+        description: valueDes,
+        type: valueType
     }
     // 4. Đưa thông tin đã cập nhật vào localStorage
     localStorage.setItem('products', JSON.stringify(products));
@@ -133,6 +136,8 @@ function handleSubmitForm() {
     let valuePrice = priceSelector.value.trim();
     let valueImage = imageSelector.value.trim();
     let valueDes = descriptionSelector.value.trim();
+    // lấy value radio checked
+    let valueType = document.querySelector('.type_product:checked').value;
 
     // 2. phân tích dữ liệu cần lưu như thế nào?-- kết luận [{}]
     
@@ -150,9 +155,10 @@ function handleSubmitForm() {
         name: valueName,
         price: valuePrice,
         image: valueImage,
-        description: valueDes
+        description: valueDes,
+        type: valueType
     }
-    
+
     // 3. thêm sản phẩm vào mảng
     products.push(newProduct);
     // Lưu data vào localStorage để load lại trang không mất dữ liệu
@@ -194,20 +200,30 @@ function renderDataProduct() {
 function handleProcessProduct(event) {
     let clicked = event.target;
     if(clicked.classList.contains('btn_delete')) {
-        // 1. Lấy tất cả dữ liệu từ localStorage
-        let products = JSON.parse(localStorage.getItem('products'));
-        // 2. Tìm id cần xóa ra khỏi array
-        let id = clicked.getAttribute('data-id');
-        // 3. Xóa object với id click ra khỏi mảng
-        let productsRemoveById = products.filter(
-            function(item) {
-                return item.id !== id;
+        // confirm before delete
+        if(confirm('Bạn chắc chắn muốn xóa sản phẩm?')) {
+            // 1. Lấy tất cả dữ liệu từ localStorage
+            let products = JSON.parse(localStorage.getItem('products'));
+            // 2. Tìm id cần xóa ra khỏi array
+            let id = clicked.getAttribute('data-id');
+            // 3. Xóa object với id click ra khỏi mảng
+            let productsRemoveById = products.filter(
+                function(item) {
+                    return item.id !== id;
+                }
+            );
+            // 4. cập nhật lại locaStorage
+            localStorage.setItem('products', JSON.stringify(productsRemoveById));
+            // 5. render lại danh sách sản phẩm theo localStorage
+            renderDataProduct();
+            // 6. reset form
+            if(id === buttonSave.getAttribute('data-id')) {
+                document.querySelector('#form_save_product').reset();
+                buttonSave.classList.remove('update');
+                buttonSave.removeAttribute('data-id');
             }
-        );
-        // 4. cập nhật lại locaStorage
-        localStorage.setItem('products', JSON.stringify(productsRemoveById));
-        // 5. render lại danh sách sản phẩm theo localStorage
-        renderDataProduct();
+        }
+        
     } else if(clicked.classList.contains('btn_edit')) {
         // 1. Lấy tất cả dữ liệu từ localStorage
         let products = JSON.parse(localStorage.getItem('products'));
@@ -225,6 +241,15 @@ function handleProcessProduct(event) {
         priceSelector.value = objEdditing.price;
         imageSelector.value = objEdditing.image;
         descriptionSelector.value = objEdditing.description;
+        let valueTypeEdditing = objEdditing.type;
+        // chọn input có value là giá trị đang edditting cho thuộc tính checked = true;
+        if (valueTypeEdditing) {
+            document.querySelector(`input[value=${valueTypeEdditing}]`).checked = true;
+        } else {
+            document.querySelector(`input[value=new_arrival]`).checked = true;
+        }
+        
+
         // 4. Thêm trạng thái vào nút save để biết update hay add
         // 4.1 Thêm class update cho button save
         buttonSave.classList.add('update');
@@ -236,7 +261,7 @@ function handleProcessProduct(event) {
 
 // Hiển thị data trong localStorage
 renderDataProduct();
-// 3. Nơi lắng nghe các sự kiện
+// 3. Nơi lắng nghe các sự kiện -- thêm mới sản phẩm
 buttonSave.addEventListener('click', handleAddProduct);
 // thêm sự kiện cho xóa sản phẩm và edit sản phẩm
 tbodySelector.addEventListener('click', handleProcessProduct);

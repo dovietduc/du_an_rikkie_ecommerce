@@ -94,4 +94,20 @@
     background-color: rgb(141, 178, 178);
 }
 
+.form-group-radio {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.form-group-radio label {
+    margin-right: 30px;
+}
+
+.form-group-radio input {
+    width: 20px;
+    height: 20px;
+    margin-right: 4px;
+}
+
 
