@@ -2,7 +2,6 @@ let logoutSelector = document.querySelector('.logout-user');
 let loginInforSelector = document.querySelector('.user_login');
 
 
-
 function getUserIsLoggin() {
     // 1. get data from localStorage
     let users = JSON.parse(localStorage.getItem('users'));

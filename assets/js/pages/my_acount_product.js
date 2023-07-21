@@ -5,6 +5,7 @@ let priceSelector = document.querySelector('.price_product');
 let imageSelector = document.querySelector('.image');
 let descriptionSelector = document.querySelector('.description');
 let tbodySelector = document.querySelector('tbody.product_table');
+let categoryFormSelector = document.querySelector('.category_wrapper_form');
 
 
 
@@ -111,13 +112,17 @@ function handleUpdateForm(idUpdate) {
     let valueDes = descriptionSelector.value.trim();
     // lấy value type do người dùng chọn
     let valueType = document.querySelector('.type_product:checked').value;
+    // lấy value của category select
+    let valueCategory = categoryFormSelector.value;
+
     products[indexUpdate] = {
         id: products[indexUpdate].id,
         name: valueName,
         price: valuePrice,
         image: valueImage,
         description: valueDes,
-        type: valueType
+        type: valueType,
+        category_id: valueCategory
     }
     // 4. Đưa thông tin đã cập nhật vào localStorage
     localStorage.setItem('products', JSON.stringify(products));
@@ -138,7 +143,8 @@ function handleSubmitForm() {
     let valueDes = descriptionSelector.value.trim();
     // lấy value radio checked
     let valueType = document.querySelector('.type_product:checked').value;
-
+    // Lấy value select
+    let valueCategory = categoryFormSelector.value;
     // 2. phân tích dữ liệu cần lưu như thế nào?-- kết luận [{}]
     
     // khi chưa có dữ liệu về products ở localStorage chúng ta tạo mảng []
@@ -156,7 +162,8 @@ function handleSubmitForm() {
         price: valuePrice,
         image: valueImage,
         description: valueDes,
-        type: valueType
+        type: valueType,
+        category_id: valueCategory
     }
 
     // 3. thêm sản phẩm vào mảng
@@ -248,8 +255,9 @@ function handleProcessProduct(event) {
         } else {
             document.querySelector(`input[value=new_arrival]`).checked = true;
         }
+        // chọn phần tử select có value là edit đang sửa cho selected
+        categoryFormSelector.value = objEdditing.category_id;
         
-
         // 4. Thêm trạng thái vào nút save để biết update hay add
         // 4.1 Thêm class update cho button save
         buttonSave.classList.add('update');
@@ -259,9 +267,30 @@ function handleProcessProduct(event) {
     
 }
 
+function showCategoryInit() {
+    // 1. Lấy tất cả category từ localStorage
+    let categorys = JSON.parse(localStorage.getItem('categories'));
+    // 2. Tạo ra các options
+    let resultOptionHtml = '<option value="">Chọn danh mục</option>';
+    for(let i = 0; i < categorys.length; i++) {
+        let categoryItem = categorys[i];
+        resultOptionHtml = resultOptionHtml + 
+        `<option value="${categoryItem.id}">
+            ${categoryItem.name}
+        </option>`;
+    }
+    // 3. Đưa category html vào trong dom
+    categoryFormSelector.innerHTML = resultOptionHtml;
+
+}
+
+
+
 // Hiển thị data trong localStorage
 renderDataProduct();
 // 3. Nơi lắng nghe các sự kiện -- thêm mới sản phẩm
 buttonSave.addEventListener('click', handleAddProduct);
 // thêm sự kiện cho xóa sản phẩm và edit sản phẩm
 tbodySelector.addEventListener('click', handleProcessProduct);
+// Hàm tạo ra option và đưa vào category
+showCategoryInit();
