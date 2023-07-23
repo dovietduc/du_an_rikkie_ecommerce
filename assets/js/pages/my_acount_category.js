@@ -1,6 +1,6 @@
 const btnCategorySave = document.querySelector('.btn_category_save');
-let inputCategory = document.querySelector('.category_name');
-let tbodyCategory = document.querySelector('.category_table');
+const inputCategory = document.querySelector('.category_name');
+const tbodyCategory = document.querySelector('.category_table');
 
 
 function handleAddCategory(event) {

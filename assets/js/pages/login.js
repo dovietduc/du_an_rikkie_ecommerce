@@ -21,13 +21,13 @@ function ValidateEmail(valueInput) {
 // valiadte password
 function ValidatePassword(valueInput) {
     let message = null;
-    // if(valueInput === '') {
-    //     message = 'Password không được để trống';
-    // } else if(valueInput.length < 8) {
-    //     message = 'Mật khẩu phải có ít nhất 8 kí tự';
-    // } else if(passwordRegex.test(valueInput) === false) {
-    //     message = 'Mật khẩu phải có ít nhất 1 kí tự hoa, thường, đặc biệt, số';
-    // }
+    if(valueInput === '') {
+        message = 'Password không được để trống';
+    } else if(valueInput.length < 8) {
+        message = 'Mật khẩu phải có ít nhất 8 kí tự';
+    } else if(passwordRegex.test(valueInput) === false) {
+        message = 'Mật khẩu phải có ít nhất 1 kí tự hoa, thường, đặc biệt, số';
+    }
     return message;
 }
 

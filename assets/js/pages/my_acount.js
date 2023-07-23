@@ -21,7 +21,7 @@ function getUserIsLoggin() {
     
 
     // đưa tên đăng nhập để hệ thống biết ai đăng nhập
-    if(userFind) {
+    if(userFind && loginInforSelector) {
         loginInforSelector.innerText = userFind.name;
     }
     
