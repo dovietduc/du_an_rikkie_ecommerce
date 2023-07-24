@@ -67,6 +67,27 @@ let users = [
         "name": "ducdo",
         "password": "a@A123456",
         "email": "vietduc122@gmail.com",
+        "status": "active",
+        cart: [
+            {id: 1, name: 'giay', quantity: 1},
+            {id: 2, name: 'ao', quantity: 2}
+        ]
+    }
+]
+
+[
+    {
+        "id": "760a12a8-a370-4bda-b6e6-3d0837d6b8f0",
+        "name": "ducdo",
+        "email": "vietduc122@gmail.com",
+        "password": "a@A123456",
         "status": "active"
+    },
+    {
+        "id": "966a4be2-d0fe-42f6-afec-532741578d0e",
+        "name": "ducdo2",
+        "email": "tvietduc122@gmail.com",
+        "password": "a@A123456",
+        "status": ""
     }
 ]
