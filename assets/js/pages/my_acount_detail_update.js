@@ -140,10 +140,23 @@ function handleUpdateAcountDetailValid() {
 
 }
 
-
-
+function showNameAndEmail() {
+    let users = JSON.parse(localStorage.getItem('users')) || [];
+    let userLogin = users.find(item => item.status === 'active');
+    // add infor to input
+    if(userLogin) {
+        acountDetailDNameSelector.value = userLogin.name;
+        acountDetailEmailSelector.value = userLogin.email;
+        acountDetailEmailSelector.disabled = true;
+    } else {
+        window.location.href = '/login.html';
+    }
+    
+}
 
 
 
 // 3. add event
 acountDetailButtonSaveSelector.addEventListener('click', handleUpdateAcountDetail);
+// khi load trang điền thông tin name và email
+showNameAndEmail();

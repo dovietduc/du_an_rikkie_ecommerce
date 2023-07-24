@@ -30,16 +30,18 @@ function getUserIsLoggin() {
 
 function handleLogout(event) {
     event.preventDefault();
-    // 1. Lấy ra tất cả user trong localStorage
-    let users = JSON.parse(localStorage.getItem('users'));
-    // 2. update tất cả user đến status = ''
-    for(let i = 0; i < users.length; i++) {
-        users[i].status = '';
+    if(confirm('Bạn chắc chắn muốn logout?')) {
+        // 1. Lấy ra tất cả user trong localStorage
+        let users = JSON.parse(localStorage.getItem('users'));
+        // 2. update tất cả user đến status = ''
+        for(let i = 0; i < users.length; i++) {
+            users[i].status = '';
+        }
+        // 3. cập nhật lại localStorage
+        localStorage.setItem('users', JSON.stringify(users));
+        // 4. chuyển về login
+        window.location.href = '/login.html';
     }
-    // 3. cập nhật lại localStorage
-    localStorage.setItem('users', JSON.stringify(users));
-    // 4. chuyển về login
-    window.location.href = '/login.html';
 
 }
 

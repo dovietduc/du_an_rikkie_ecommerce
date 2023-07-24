@@ -104,23 +104,28 @@ function handleShowProductByCategory(event) {
         // 6. Thêm dữ liệu đến container
         shopContainerSelector.innerHTML = htmResult;
 
-        // 7. Thực hiện hiển thị phân trang
-        // 7.1 Tính toán tổng số trang
-        let totalPage = Math.ceil((productFilter.length) / perPage);
-        let htmlPagination = '';
-        for(let i = 1; i <= totalPage; i++) {
-            htmlPagination = htmlPagination +
-             `<li class="page-item ${i === 1 ? 'active' : ''}">
-             <a data-category_id="${categoryId}" data-page=${i} class="page-link" href="">${i}</a></li>`;
-        }
-        // 7.2 đưa phân trang vào container
-        paginationSelector.innerHTML = htmlPagination;
-
         // active category click
         // Xóa tất cả class active ở thẻ li
         document.querySelectorAll('.item_cate_click').forEach(item => item.classList.remove('active'));
         // Thêm class active cho item li đang click
         liSelectorClicked.classList.add('active');
+
+        // 7. Thực hiện hiển thị phân trang
+        // 7.1 Tính toán tổng số trang
+        let totalPage = Math.ceil((productFilter.length) / perPage);
+        if(totalPage === 1) {
+            paginationSelector.innerHTML = '';
+        } else {
+            let htmlPagination = '';
+            for(let i = 1; i <= totalPage; i++) {
+                htmlPagination = htmlPagination +
+                 `<li class="page-item ${i === 1 ? 'active' : ''}">
+                 <a data-category_id="${categoryId}" data-page=${i} class="page-link" href="">${i}</a></li>`;
+            }
+            // 7.2 đưa phân trang vào container
+            paginationSelector.innerHTML = htmlPagination;
+        }
+      
     }
 
 }
