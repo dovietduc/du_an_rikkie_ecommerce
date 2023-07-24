@@ -1,10 +1,10 @@
-let buttonLogin = document.querySelector('.btn-login');
-let inputSelectorAll = document.querySelectorAll('.form-group .form-control');
-let emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-let passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
-let emailSelector = document.querySelector('.email');
-let passwordSelector = document.querySelector('.password');
-let alertSelector = document.querySelector('.alert-danger');
+const buttonLogin = document.querySelector('.btn-login');
+const inputSelectorAll = document.querySelectorAll('.form-group .form-control');
+const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
+const emailSelector = document.querySelector('.email');
+const passwordSelector = document.querySelector('.password');
+const alertSelector = document.querySelector('.alert-danger');
 
 
 // valiadte email

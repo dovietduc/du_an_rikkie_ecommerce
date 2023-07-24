@@ -1,4 +1,4 @@
-let ulTabSelector = document.querySelector('.product_tab_click');
+const ulTabSelector = document.querySelector('.product_tab_click');
 
 
 

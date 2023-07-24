@@ -1,4 +1,4 @@
-let loginInforSelector = document.querySelector('.user_login');
+const loginInforSelector = document.querySelector('.user_login');
 
 function getUserIsLoggin() {
     // 1. get data from localStorage

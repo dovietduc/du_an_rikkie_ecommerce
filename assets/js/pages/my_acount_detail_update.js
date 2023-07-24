@@ -5,7 +5,7 @@ const acountDetailPasswordSelector = document.querySelector('.form_update_acount
 const acountDetailNpassdSelector = document.querySelector('.form_update_acount input[name="npassword"]');
 const acountDetailCpasswordSelector = document.querySelector('.form_update_acount input[name="cpassword"]');
 const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-let passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
+const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
 
 
 

@@ -1,11 +1,12 @@
 // 1. Nơi lưu trữ các biến querySelector
-let buttonSave = document.querySelector('.btn_save');
-let nameSelector = document.querySelector('.name');
-let priceSelector = document.querySelector('.price_product');
-let imageSelector = document.querySelector('.image');
-let descriptionSelector = document.querySelector('.description');
-let tbodySelector = document.querySelector('tbody.product_table');
-let categoryFormSelector = document.querySelector('.category_wrapper_form');
+const buttonSave = document.querySelector('.btn_save');
+const nameSelector = document.querySelector('.name');
+const priceSelector = document.querySelector('.price_product');
+const imageSelector = document.querySelector('.image');
+const descriptionSelector = document.querySelector('.description');
+const tbodySelector = document.querySelector('tbody.product_table');
+const categoryFormSelector = document.querySelector('.category_wrapper_form');
+
 
 
 

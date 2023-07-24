@@ -1,5 +1,5 @@
-let logoutSelector = document.querySelector('.logout-user');
-let loginInforSelector = document.querySelector('.user_login');
+const logoutSelector = document.querySelector('.logout-user');
+const loginInforSelector = document.querySelector('.user_login');
 
 
 function getUserIsLoggin() {

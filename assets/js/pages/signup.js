@@ -1,15 +1,12 @@
 // 1. Nơi để các biến lưu trữ (querySelector...)
-let buttonRegister = document.querySelector('.btn-signup');
-let nameSelector = document.querySelector('.name');
-let emailSelector = document.querySelector('.email');
-let emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-let passwordSelector = document.querySelector('.password');
-let passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
-let confirmPasswordSelector = document.querySelector('.confirm_password');
-let tooglePass = document.querySelector('.toogle_password');
-// data users
-let users = [];
-
+const buttonRegister = document.querySelector('.btn-signup');
+const nameSelector = document.querySelector('.name');
+const emailSelector = document.querySelector('.email');
+const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+const passwordSelector = document.querySelector('.password');
+const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
+const confirmPasswordSelector = document.querySelector('.confirm_password');
+const tooglePass = document.querySelector('.toogle_password');
 
 function showError(input, message) {
     // thay đổi border input
