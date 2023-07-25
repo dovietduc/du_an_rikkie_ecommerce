@@ -107,3 +107,26 @@ let users = [
 
 
 // 3. cập nhật lại localStorage cho users
+
+
+
+{/* <tr data-product_id="d1cec4de-cec6-4e51-8e91-2af6ce350991">              
+    <td class="product-quantity" data-title="Quantity"><div class="quantity">
+</tr>     */}
+
+<tr data-product_id="059dab65-891b-40aa-8e4f-525059dce395"></tr>
+<input type="text" name="quantity" value="1" title="Qty" class="qty" size="4"> 
+</tr>   
+
+<tr data-product_id="29bb27a1-51cd-42be-8361-72009770f372">
+<input type="text" name="quantity" value="2" title="Qty" class="qty" size="4">
+</tr>
+
+
+cart = [
+    {id: 'd1cec4de-cec6-4e51-8e91-2af6ce350991', name: 'danh mục 1', quantuty: '200', image: 'https://images.unsplash.com/photo-1542291026-7eec2…ufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80', description: 'danh mục 1', …}
+
+    {id: '059dab65-891b-40aa-8e4f-525059dce395', name: 'danh mục 1.1', price: '200', image: 'https://images.unsplash.com/photo-1543508282-6319a…ufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=415&q=80', description: 'mô tả 1.1', …}
+
+    {id: '29bb27a1-51cd-42be-8361-72009770f372', name: 'danh mục 2', price: '300', image: 'https://images.unsplash.com/photo-1549298916-b41d5…ufDB8fHx8fA%3D%3D&auto=format
+]

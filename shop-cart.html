@@ -183,42 +183,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                        	<tr>
-                            	<td class="product-thumbnail"><a href="#"><img src="assets/images/product_img1.jpg" alt="product1"></a></td>
-                                <td class="product-name" data-title="Product"><a href="#">Blue Dress For Woman</a></td>
-                                <td class="product-price" data-title="Price">$45.00</td>
-                                <td class="product-quantity" data-title="Quantity"><div class="quantity">
-                                <input type="button" value="-" class="minus">
-                                <input type="text" name="quantity" value="2" title="Qty" class="qty" size="4">
-                                <input type="button" value="+" class="plus">
-                              </div></td>
-                              	<td class="product-subtotal" data-title="Total">$90.00</td>
-                                <td class="product-remove" data-title="Remove"><a href="#"><i class="ti-close"></i></a></td>
-                            </tr>
-                            <tr>
-                            	<td class="product-thumbnail"><a href="#"><img src="assets/images/product_img2.jpg" alt="product2"></a></td>
-                                <td class="product-name" data-title="Product"><a href="#">Lether Gray Tuxedo</a></td>
-                                <td class="product-price" data-title="Price">$55.00</td>
-                                <td class="product-quantity" data-title="Quantity"><div class="quantity">
-                                <input type="button" value="-" class="minus">
-                                <input type="text" name="quantity" value="1" title="Qty" class="qty" size="4">
-                                <input type="button" value="+" class="plus">
-                              </div></td>
-                              	<td class="product-subtotal" data-title="Total">$55.00</td>
-                                <td class="product-remove" data-title="Remove"><a href="#"><i class="ti-close"></i></a></td>
-                            </tr>
-                            <tr>
-                            	<td class="product-thumbnail"><a href="#"><img src="assets/images/product_img3.jpg" alt="product3"></a></td>
-                                <td class="product-name" data-title="Product"><a href="#">woman full sliv dress</a></td>
-                                <td class="product-price" data-title="Price">$68.00</td>
-                                <td class="product-quantity" data-title="Quantity"><div class="quantity">
-                                <input type="button" value="-" class="minus">
-                                <input type="text" name="quantity" value="3" title="Qty" class="qty" size="4">
-                                <input type="button" value="+" class="plus">
-                              </div></td>
-                              	<td class="product-subtotal" data-title="Total">$204.00</td>
-                                <td class="product-remove" data-title="Remove"><a href="#"><i class="ti-close"></i></a></td>
-                            </tr>
+
+                            <!-- Nội dung hiển thị cart của user đang loggin -->
+                            <!-- Nội dung hiển thị cart của user đang loggin -->
+
                         </tbody>
                         <tfoot>
                         	<tr>
@@ -229,7 +197,7 @@
                                             
                                     	</div>
                                         <div class="col-lg-8 col-md-6  text-start  text-md-end">
-                                            <button class="btn btn-line-fill btn-sm" type="submit">Update Cart</button>
+                                            <button class="btn btn-line-fill btn-sm btn_update_cart" type="submit">Update Cart</button>
                                         </div>
                                     </div>
                                 </td>
@@ -259,14 +227,6 @@
                     <div class="table-responsive">
                         <table class="table">
                             <tbody>
-                                <tr>
-                                    <td class="cart_total_label">Cart Subtotal</td>
-                                    <td class="cart_total_amount">$349.00</td>
-                                </tr>
-                                <tr>
-                                    <td class="cart_total_label">Shipping</td>
-                                    <td class="cart_total_amount">Free Shipping</td>
-                                </tr>
                                 <tr>
                                     <td class="cart_total_label">Total</td>
                                     <td class="cart_total_amount"><strong>$349.00</strong></td>
@@ -440,6 +400,10 @@
 <script src="assets/js/jquery.elevatezoom.js"></script>
 <!-- scripts js --> 
 <script src="assets/js/scripts.js"></script>
+<!-- cart js -->
+<script src="assets/js/pages/cart.js"></script>
+<!-- shop cart table -->
+<script src="assets/js/pages/shop-cart.js"></script>
 
 </body>
 </html>
