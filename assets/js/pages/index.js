@@ -66,7 +66,7 @@ function renderProduct(productFilterByType) {
                     </div>
                 </div>
                 <div class="product_info">
-                    <h6 class="product_title"><a href="shop-product-detail.html">${productItem.name}</a></h6>
+                    <h6 class="product_title"><a href="/shop-product-detail.html?id=${productItem.id}">${productItem.name}</a></h6>
                     <div class="product_price">
                         <span class="price">$${productItem.price}</span>
                         <del>$55.25</del>

@@ -14,7 +14,8 @@ function totalCartsNumber() {
     // Tính toán tổng số sản phẩm trong giỏ hàng (tổng quantity)
     let totalCart = 0;
     for(let i = 0; i < cartOfUser.length; i++) {
-        totalCart = totalCart + (+cartOfUser[i].quantity);
+        let quantity = cartOfUser[i].quantity;
+        totalCart = totalCart + (+quantity);
     }
     // Hiển thị số lượng
     document.querySelector('.cart_count').innerText = totalCart;

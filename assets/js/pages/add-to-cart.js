@@ -2,12 +2,12 @@ const mainContentSelector = document.querySelector('.main_content');
 
 
 function handleAddCart(event) {
-    event.preventDefault();
     
     let clicked = event.target;
     let liClicked = clicked.closest('li.add-to-cart');
 
     if(liClicked) {
+        event.preventDefault();
         // input
         let idProduct = liClicked.getAttribute('data-id_product');
         let products = JSON.parse(localStorage.getItem('products'));
@@ -24,6 +24,7 @@ function handleAddCart(event) {
         // 2.1 Tạo ra value của cart [{san pham}]
         // user chưa có cart nghĩa là có tài khoản nhưng chưa từng mua hàng trên trang
         let cartOfUser = userIsLogginning.cart;
+        
         let cart;
         // chưa có key cart hay lần đầu mua hàng
         if(!cartOfUser) {

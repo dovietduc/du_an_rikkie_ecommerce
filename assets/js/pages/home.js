@@ -1,4 +1,5 @@
-const loginInforSelector = document.querySelector('.user_login');
+// sửa chỗ này
+const loginInforSelector = document.querySelector('.header_list .ti-user').nextElementSibling;
 
 function getUserIsLoggin() {
     // 1. get data from localStorage
