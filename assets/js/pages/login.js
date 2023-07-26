@@ -81,12 +81,20 @@ function handleLogin(event) {
         }
         // 3. Thực hiện vào trang home hoặc hiện lỗi sai email và pass
         if(isLoginExitIndex !== -1) {
+            users.forEach(function(item) {
+                item.status = '';
+            }); 
             // cập nhật status -> active
             users[isLoginExitIndex].status = 'active';
             // set to localStorage
             localStorage.setItem('users', JSON.stringify(users));
             // chuyển sang trang home
-            window.location.href = '/index.html';
+            if(users[isLoginExitIndex].role === 'admin') {
+                window.location.href = '/my-account.html';
+            } else {
+                window.location.href = '/index.html';
+            }
+            
         } else {
             // Hiển thị lỗi ở trên form
             alertSelector.innerText = 'Email hoặc password không đúng';

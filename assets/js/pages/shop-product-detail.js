@@ -2,19 +2,27 @@
 const btnAddtocart = document.querySelector('.btn-addtocart');
 
 function showProductDetail() {
-    // get query string với id value
+    // 1. Lấy ra id sản phẩm
     const queryString = window.location.search;
-    const arrParam = queryString.split('=');
-    const idProduct = arrParam[1];
-    // lấy ra sản phẩm
-    const products = JSON.parse(localStorage.getItem('products'));
-    const product = products.find(item => item.id === idProduct);
-    // show image
-    document.querySelector('.product_img_box img').setAttribute('src', product.image);
-    document.querySelector('.pr_detail .product_title a').innerText = product.name;
-    document.querySelector('.pr_detail .product_price span').innerText = '$' + product.price;
-    document.querySelector('#Description').innerText = product.description;
+    // tách chuỗi ra mảng
+    const arrDetail = queryString.split('=');
+    // lấy ra id sản phẩm 
+    const productId = arrDetail[1];
 
+    // 2. Lấy ra sản phẩm với produtId lấy được
+    let products = JSON.parse(localStorage.getItem('products'));
+    let product = products.find(item => item.id === productId);
+    
+
+    // 3. Thay đổi thông tin theo detail
+    // image
+    document.querySelector('.product-image img').setAttribute('src', product.image);
+    // tên sản phẩm
+    document.querySelector('.pr_detail .product_title a').innerText = product.name;
+    // giá sản phẩm
+    document.querySelector('.pr_detail .product_price span').innerText = '$' + product.price;
+
+   
 }
 
 function showProductRealative() {
@@ -116,7 +124,7 @@ function handleAddCartDetail(event) {
         }
         // sản phẩm chưa có trong giỏ hàng
         else {
-            cart = [...cartOfUser, { ...product, quantity: 1 }];
+            cart = [...cartOfUser, { ...product, quantity: parseInt(quantity) }];
         }
 
     }

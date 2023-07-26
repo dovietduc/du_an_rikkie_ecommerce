@@ -72,7 +72,8 @@ function handleSignUp(event) {
                 name: nameSelector.value,
                 email: emailSelector.value,
                 password: passwordSelector.value,
-                status: ''
+                status: '',
+                role: 'regular'
             }
 
             // thêm user vào mảng đã có sẵn

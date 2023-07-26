@@ -47,12 +47,12 @@ function handleShowProductByCategory(event) {
             htmResult = htmResult + `<div class="col-md-4 col-6">
                 <div class="product">
                     <div class="product_img">
-                        <a href="shop-product-detail.html">
+                        <a href="/shop-product-detail.html?id=${productItem.id}">
                             <img src="${productItem.image}">
                         </a>
                         <div class="product_action_box">
                             <ul class="list_none pr_action_btn">
-                                <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i>
+                                <li data-id_product="${productItem.id}" class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i>
                                         Add To Cart</a></li>
                                 <li><a href="shop-compare.html" class="popup-ajax"><i
                                             class="icon-shuffle"></i></a></li>
@@ -64,7 +64,7 @@ function handleShowProductByCategory(event) {
                     </div>
                     <div class="product_info">
                         <h6 class="product_title">
-                            <a href="shop-product-detail.html">
+                            <a href="/shop-product-detail.html?id=${productItem.id}">
                                 ${productItem.name}
                             </a>
                         </h6>
@@ -88,7 +88,7 @@ function handleShowProductByCategory(event) {
 
                         <div class="list_product_action_box">
                             <ul class="list_none pr_action_btn">
-                                <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i>
+                                <li data-id_product="${productItem.id}" class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i>
                                         Add To Cart</a></li>
                                 <li><a href="shop-compare.html" class="popup-ajax"><i
                                             class="icon-shuffle"></i></a></li>
@@ -155,12 +155,12 @@ function handleClickPageCategory(event) {
             htmResult = htmResult + `<div class="col-md-4 col-6">
                 <div class="product">
                     <div class="product_img">
-                        <a href="shop-product-detail.html">
+                        <a href="/shop-product-detail.html?id=${productItem.id}">
                             <img src="${productItem.image}">
                         </a>
                         <div class="product_action_box">
                             <ul class="list_none pr_action_btn">
-                                <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i>
+                                <li data-id_product="${productItem.id}" class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i>
                                         Add To Cart</a></li>
                                 <li><a href="shop-compare.html" class="popup-ajax"><i
                                             class="icon-shuffle"></i></a></li>
@@ -172,7 +172,7 @@ function handleClickPageCategory(event) {
                     </div>
                     <div class="product_info">
                         <h6 class="product_title">
-                            <a href="shop-product-detail.html">
+                            <a href="/shop-product-detail.html?id=${productItem.id}">
                                 ${productItem.name}
                             </a>
                         </h6>
@@ -196,7 +196,7 @@ function handleClickPageCategory(event) {
 
                         <div class="list_product_action_box">
                             <ul class="list_none pr_action_btn">
-                                <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i>
+                                <li data-id_product="${productItem.id}" class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i>
                                         Add To Cart</a></li>
                                 <li><a href="shop-compare.html" class="popup-ajax"><i
                                             class="icon-shuffle"></i></a></li>
