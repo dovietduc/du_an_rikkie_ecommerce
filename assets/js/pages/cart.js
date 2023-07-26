@@ -1,5 +1,5 @@
 function getUserLogin() {
-    let users = JSON.parse(localStorage.getItem('users'));
+    let users = JSON.parse(localStorage.getItem('users')) || [];
     let userLoggin = users.find(item => item.status === 'active');
     return userLoggin;
 }

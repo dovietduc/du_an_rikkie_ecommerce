@@ -8,7 +8,7 @@ function handleShowProductByTab(event) {
         let productType = clicked.getAttribute('data-type');
 
         // 1. Lấy tất cả sản phẩm ở localStorage
-        let products = JSON.parse(localStorage.getItem('products'));
+        let products = JSON.parse(localStorage.getItem('products')) || [];
         let productFilterByType = products.filter(
             function(item) {
                 if(item.type === productType) {
@@ -91,7 +91,7 @@ function renderProduct(productFilterByType) {
 
 function loadProductFeature(){
     // 1. Lấy tất cả sản phẩm ở localStorage
-    let products = JSON.parse(localStorage.getItem('products'));
+    let products = JSON.parse(localStorage.getItem('products')) || [];
     let productFilterByType = products.filter((item) => item.type === 'feature');
 
     // Lấy 12 object

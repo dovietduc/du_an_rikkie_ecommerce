@@ -270,7 +270,7 @@ function handleProcessProduct(event) {
 
 function showCategoryInit() {
     // 1. Lấy tất cả category từ localStorage
-    let categorys = JSON.parse(localStorage.getItem('categories'));
+    let categorys = JSON.parse(localStorage.getItem('categories')) || [];
     // 2. Tạo ra các options
     let resultOptionHtml = '<option value="">Chọn danh mục</option>';
     for(let i = 0; i < categorys.length; i++) {

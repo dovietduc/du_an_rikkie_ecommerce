@@ -7,7 +7,7 @@ const perPage = 1;
 
 function showCategory() {
     // 1. Lấy tất cả danh mục từ localStorage
-    let categorys = JSON.parse(localStorage.getItem('categories'));
+    let categorys = JSON.parse(localStorage.getItem('categories')) || [];
     // 2. Xây dựng cấu trúc html cho category
     let resultCate = '';
     for(let i = 0; i < categorys.length; i++) {
@@ -224,7 +224,10 @@ showCategory();
 // Thêm sự kiện khi click vào mỗi category
 categoryWrapperSelector.addEventListener('click', handleShowProductByCategory);
 // Khi trang load lần đầu tự động click vào li số đầu tiên
-document.querySelector('.widget_categories li:first-child').click();
+if(document.querySelector('.widget_categories li:first-child')) {
+    document.querySelector('.widget_categories li:first-child').click();
+}
+
 // Thêm sự kiện khi click vào mỗi trang trong phân trang
 paginationSelector.addEventListener('click', handleClickPageCategory);
 

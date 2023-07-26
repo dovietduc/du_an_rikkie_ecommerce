@@ -2,12 +2,24 @@ const tbodyCartTable = document.querySelector('.shop_cart_table tbody');
 const btnUpdateCart = document.querySelector('.btn_update_cart');
 const btnCheckOut = document.querySelector('.btn-fill-out');
 
-let cartOfUserTemp = getUserLogin().cart;
+let cartOfUserTemp;
+if(getUserLogin()) {
+    cartOfUserTemp = getUserLogin().cart;
+}
+
+
 
 
 function showCartOfUser() {
     let userIsLogginning = getUserLogin();
-    let cartOfUser = userIsLogginning.cart;
+    let cartOfUser;
+    if(userIsLogginning) {
+        cartOfUser = userIsLogginning.cart || [];
+    } else {
+        cartOfUser = [];
+    }
+    
+    
 
     let htmlResult = '';
     for(let i = 0; i < cartOfUser.length; i++) {
@@ -144,7 +156,13 @@ function handleProcessCart(event) {
 
 function totalMoneyCart() {
     let userIsLogginning = getUserLogin();
-    let cartOfUser = userIsLogginning.cart;
+    let cartOfUser;
+    if(userIsLogginning) {
+        cartOfUser = userIsLogginning.cart || [];
+    } else {
+        cartOfUser = [];
+    }
+   
 
     let totalMoney = 0;
     for(let i = 0; i < cartOfUser.length; i++) {
